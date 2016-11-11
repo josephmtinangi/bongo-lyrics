@@ -76,7 +76,8 @@ class SongController extends Controller
      */
     public function show($id)
     {
-        //
+        $lyric = Song::with(['artist', 'user'])->findOrFail($id);
+        return view('lyrics.show', compact('lyric'));
     }
 
     /**
