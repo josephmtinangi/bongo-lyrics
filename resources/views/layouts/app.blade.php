@@ -23,9 +23,8 @@
     </script>
 </head>
 <body>
+@include('partials/navbar')
 <div id="app">
-
-    @include('partials/navbar')
 
     <div class="container">
         @include('flash::message')

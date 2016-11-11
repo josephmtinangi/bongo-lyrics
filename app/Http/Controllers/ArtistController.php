@@ -56,7 +56,7 @@ class ArtistController extends Controller
 
         flash('Artist added.');
 
-        return redirect('artists');
+        return redirect('lyrics/create');
     }
 
     /**

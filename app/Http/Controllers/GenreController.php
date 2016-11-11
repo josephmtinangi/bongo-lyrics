@@ -56,7 +56,7 @@ class GenreController extends Controller
 
         flash('Genre added.');
 
-        return redirect('genres');
+        return redirect('lyrics/create');
     }
 
     /**

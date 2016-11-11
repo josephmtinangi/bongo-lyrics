@@ -11,7 +11,7 @@
 </div>
 <div class="form-group {{ $errors->has('artist') ? 'has-error' : ''  }}">
     {!! Form::label('artist', 'Artist', ['class' => 'col-sm-2 control-label']) !!}
-    <div class="col-sm-10">
+    <div class="col-sm-5">
         <select name="artist" id="artist" class="form-control" required="required">
             <option value="">-- Select --</option>
             @foreach($artists as $artist)
@@ -30,10 +30,13 @@
             </p>
         @endif
     </div>
+    <div class="col-sm-5">
+        Don't see your artist? <a href="{{ url('artists/create') }}">Add</a>
+    </div>
 </div>
 <div class="form-group {{ $errors->has('genre') ? 'has-error' : ''  }}">
     {!! Form::label('genre', 'Genre', ['class' => 'col-sm-2 control-label']) !!}
-    <div class="col-sm-10">
+    <div class="col-sm-5">
         <select name="genre" id="genre" class="form-control" required="required">
             <option value="">-- Select --</option>
             @foreach($genres as $genre)
@@ -51,6 +54,9 @@
                 {{ $errors->first('genre') }}
             </p>
         @endif
+    </div>
+    <div class="col-sm-5">
+        Don't see your genre? <a href="{{ url('genres/create') }}">Add</a>
     </div>
 </div>
 <div class="form-group {{ $errors->has('lyrics') ? 'has-error' : ''  }}">
