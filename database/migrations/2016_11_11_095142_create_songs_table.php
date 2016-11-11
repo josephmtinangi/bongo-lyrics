@@ -21,7 +21,7 @@ class CreateSongsTable extends Migration
             $table->string('youtube_url')->nullable();
             $table->text('lyrics');
             $table->integer('genre_id')->unsigned();
-            $table->foreign('genre_id')->references('id')->on('genre')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('genre_id')->references('id')->on('genres')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
