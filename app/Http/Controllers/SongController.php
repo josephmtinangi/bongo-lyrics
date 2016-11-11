@@ -13,7 +13,7 @@ class SongController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['show']]);
+        $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
     /**
@@ -23,7 +23,7 @@ class SongController extends Controller
      */
     public function index()
     {
-        $lyrics = Song::all();
+        $lyrics = Song::with('artist')->get();
         return view('lyrics.index', compact('lyrics'));
     }
 

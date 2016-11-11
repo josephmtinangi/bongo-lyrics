@@ -5,84 +5,56 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Lyrics</h3>
-                    </div>
-                    <div class="panel-body">
-                        @if($lyrics->count() > 0)
-                            <div class="table-responsive">
-                                <table class="table table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Song title</th>
-                                        <th>Added</th>
-                                        <th>Updated</th>
-                                        <th colspan="2">Actions</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php $i = 1; ?>
-                                    @foreach($lyrics as $lyric)
-                                        <tr>
-                                            <td>{{ $i++ }}</td>
-                                            <td>{{ $lyric->title }}</td>
-                                            <td>{{ $lyric->created_at }}</td>
-                                            <td>{{ $lyric->updated_at }}</td>
-                                            <td><a href="{{ url('lyrics/' . $lyric->id . '/edit') }}">Edit</a></td>
-                                            <td>
-                                                <a data-toggle="modal" href='#{{ $lyric->id }}'>Delete</a>
-                                                <div class="modal fade" id="{{ $lyric->id }}">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                        aria-hidden="true">&times;</button>
-                                                                <h4 class="modal-title">
-                                                                    Delete {{ $lyric->name }}</h4>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                Are you sure you want to delete permanently?
-                                                                <p>
-                                                                    <strong>{{ $lyric->title }}</strong>
-                                                                </p>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <form action="{{ url('lyrics/'.$lyric->id) }}"
-                                                                      method="POST">
-                                                                    {{ csrf_field() }}
-                                                                    {{ method_field('DELETE') }}
 
-                                                                    <button type="button" class="btn btn-default"
-                                                                            data-dismiss="modal">Cancel
-                                                                    </button>
-                                                                    <button type="submit"
-                                                                            class="btn btn-danger">
-                                                                        Delete
-                                                                    </button>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        @else
-                            <div class="jumbotron">
-                                <div class="container">
-                                    <h2 class="text-center">
-                                        No Lyric
-                                    </h2>
+                @if($lyrics->count() > 0)
+                    @foreach($lyrics->chunk(3) as $lyricsSet)
+                        <div class="row">
+                            @foreach($lyricsSet as $lyric)
+                                <div class="[ col-sm-6 col-md-4 ]">
+                                    <div class="[ info-card ]">
+                                        <img style="width: 100%"
+                                             src="http://lorempixel.com/400/200/abstract/{{ str_random(1) }}"/>
+                                        <div class="[ info-card-details ] animate">
+                                            <div class="[ info-card-header ]">
+                                                <h1> {{ $lyric->title }} </h1>
+                                                <h3> {{ $lyric->artist->name  }} </h3>
+                                            </div>
+                                            <div class="[ info-card-detail ]">
+                                                <!-- Description -->
+                                                <p>{{ str_limit($lyric->lyrics, 100) }} <a
+                                                            href="{{ url('lyrics/' . $lyric->id) }}">More</a></p>
+                                                {{--<div class="social">--}}
+                                                    {{--<a href="https://www.facebook.com/rem.mcintosh"--}}
+                                                       {{--class="[ social-icon facebook ] animate"><span--}}
+                                                                {{--class="fa fa-facebook"></span></a>--}}
+
+                                                    {{--<a href="https://twitter.com/Mouse0270"--}}
+                                                       {{--class="[ social-icon twitter ] animate"><span--}}
+                                                                {{--class="fa fa-twitter"></span></a>--}}
+
+                                                    {{--<a href="https://github.com/mouse0270"--}}
+                                                       {{--class="[ social-icon github ] animate"><span--}}
+                                                                {{--class="fa fa-github-alt"></span></a>--}}
+
+                                                    {{--<a href="https://plus.google.com/u/0/115077481218689845626/posts"--}}
+                                                       {{--class="[ social-icon google-plus ] animate"><span--}}
+                                                                {{--class="fa fa-google-plus"></span></a>--}}
+
+                                                    {{--<a href="www.linkedin.com/in/remcintosh/"--}}
+                                                       {{--class="[ social-icon linkedin ] animate"><span--}}
+                                                                {{--class="fa fa-linkedin"></span></a>--}}
+                                                {{--</div>--}}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        @endif
-                    </div>
-                </div>
+                            @endforeach
+                        </div>
+                    @endforeach
+                @else
+                    Dead end
+                @endif
+
             </div>
         </div>
     </div>
