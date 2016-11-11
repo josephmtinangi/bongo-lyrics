@@ -17,4 +17,9 @@ class Genre extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function songs()
+    {
+        return $this->hasMany('App\Song');
+    }
 }

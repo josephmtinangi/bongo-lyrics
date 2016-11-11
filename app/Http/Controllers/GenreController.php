@@ -21,7 +21,7 @@ class GenreController extends Controller
      */
     public function index()
     {
-        $genres = Genre::whereUserId(Auth::user()->id)->get();
+        $genres = Genre::all();
         return view('genres.index', compact('genres'));
     }
 
@@ -67,7 +67,8 @@ class GenreController extends Controller
      */
     public function show($id)
     {
-        //
+        $genre = Genre::with('songs')->findOrFail($id);
+        return view('genres.show', compact('genre'));
     }
 
     /**
