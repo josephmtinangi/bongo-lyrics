@@ -23,4 +23,4 @@ Route::resource('genres', 'GenreController');
 
 Route::resource('artists', 'ArtistController');
 
-Route::resource('songs', 'SongController');
+Route::resource('lyrics', 'SongController');

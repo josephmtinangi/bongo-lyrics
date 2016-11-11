@@ -2,10 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Artist;
+use App\Genre;
+use App\Song;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SongController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +23,8 @@ class SongController extends Controller
      */
     public function index()
     {
-        //
+        $lyrics = Song::all();
+        return view('lyrics.index', compact('lyrics'));
     }
 
     /**
@@ -23,24 +34,37 @@ class SongController extends Controller
      */
     public function create()
     {
-        //
+        $artists = Artist::all();
+        $genres = Genre::all();
+        return view('lyrics.create', compact('artists', 'genres'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        Song::create([
+            'title' => $request->input('title'),
+            'artist_id' => $request->input('artist'),
+            'youtube_url' => $request->input('youtube_url'),
+            'lyrics' => $request->input('lyrics'),
+            'genre_id' => $request->input('genre'),
+            'user_id' => Auth::user()->id,
+        ]);
+
+        flash('Lyric added.');
+
+        return redirect('lyrics');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -51,7 +75,7 @@ class SongController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -62,8 +86,8 @@ class SongController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -74,7 +98,7 @@ class SongController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
