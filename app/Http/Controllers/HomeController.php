@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Artist;
+use App\Genre;
+use App\Song;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +27,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $lyrics = Song::whereId(Auth::user()->id)->get();
+        $genres = Genre::whereUserId(Auth::user()->id)->get();
+        $artists = Artist::all();
+        return view('home', compact('lyrics', 'genres', 'artists'));
     }
 }
