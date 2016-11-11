@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $lyrics = App\Song::orderBy('created_at', 'DESC')->get();
+    return view('welcome', compact('lyrics'));
 });
 
 Auth::routes();
