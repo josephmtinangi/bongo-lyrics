@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="jumbotron">
+    <div class="jumbotron" style="background: #1987F9; color: #fff;">
         <div class="container">
             <h1 class="text-center">{{ $genre->display_name  }}</h1>
         </div>

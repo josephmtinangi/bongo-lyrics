@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="jumbotron">
+    <div class="jumbotron" style="background: #0A8B3F; color: #fff;">
         <div class="container">
             <h1>Artists</h1>
         </div>
