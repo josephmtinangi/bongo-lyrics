@@ -56,7 +56,7 @@ class GenreController extends Controller
 
         flash('Genre added.');
 
-        return redirect('home');
+        return redirect('genres');
     }
 
     /**
@@ -78,7 +78,8 @@ class GenreController extends Controller
      */
     public function edit($id)
     {
-        //
+        $genre = Genre::findOrFail($id);
+        return view('genres.edit', compact('genre'));
     }
 
     /**
@@ -90,7 +91,21 @@ class GenreController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'display_name' => 'required|max:255',
+        ]);
+
+        $genre = Genre::findOrFail($id);
+
+        $genre->display_name = $request->input('display_name');
+        $genre->name = str_slug($request->input('display_name'), '-');
+        $genre->description = $request->input('description');
+        $genre->user_id = Auth::user()->id;
+        $genre->save();
+
+        flash('Genre updated.');
+
+        return redirect('genres');
     }
 
     /**

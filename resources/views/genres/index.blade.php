@@ -30,7 +30,7 @@
                                             <td>{{ $genre->display_name }}</td>
                                             <td>{{ $genre->created_at }}</td>
                                             <td>{{ $genre->updated_at }}</td>
-                                            <td>Edit</td>
+                                            <td><a href="{{ url('genres/' . $genre->id . '/edit') }}">Edit</a></td>
                                             <td>Delete</td>
                                         </tr>
                                     @endforeach
