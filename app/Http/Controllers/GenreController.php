@@ -21,7 +21,8 @@ class GenreController extends Controller
      */
     public function index()
     {
-
+        $genres = Genre::whereUserId(Auth::user()->id)->get();
+        return view('genres.index', compact('genres'));
     }
 
     /**
