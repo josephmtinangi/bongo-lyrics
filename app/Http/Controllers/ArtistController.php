@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Artist;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class ArtistController extends Controller
 {
@@ -21,7 +20,8 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        //
+        $artists = Artist::all();
+        return view('artists.index', compact('artists'));
     }
 
     /**
