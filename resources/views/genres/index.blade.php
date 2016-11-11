@@ -8,9 +8,7 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-sm-12">
-
-                <h2 class="text-center">Recently Added</h2>
+            <div class="col-sm-12 well well-lg">
 
                 @if($genres->count() > 0)
                     @foreach($genres->chunk(4) as $genresSet)

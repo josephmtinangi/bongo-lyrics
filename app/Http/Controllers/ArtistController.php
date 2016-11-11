@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Artist;
-use App\Song;
 use Illuminate\Http\Request;
 
 class ArtistController extends Controller
@@ -11,7 +10,7 @@ class ArtistController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['show']]);
+        $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
     /**

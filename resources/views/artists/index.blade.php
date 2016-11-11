@@ -8,9 +8,7 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-sm-12">
-
-                <h2 class="text-center">Recently Added</h2>
+            <div class="col-sm-12 well well-lg">
 
                 @if($artists->count() > 0)
                     @foreach($artists->chunk(4) as $artistsSet)
@@ -22,7 +20,7 @@
                                         <div class="caption">
                                             <h3>{{ $artist->name }}</h3>
                                             <p>
-                                                <a href="{{ url('artists/' . $artist->id) }}" class="btn btn-primary">Songs</a>
+                                                <a href="{{ url('artists/' . $artist->id) }}" class="btn btn-link">Songs</a>
                                             </p>
                                         </div>
                                     </div>
