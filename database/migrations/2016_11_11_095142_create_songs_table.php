@@ -18,8 +18,10 @@ class CreateSongsTable extends Migration
             $table->string('title');
             $table->integer('artist_id')->unsigned();
             $table->foreign('artist_id')->references('id')->on('artists')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('song_url')->nullable();
+            $table->string('youtube_url')->nullable();
             $table->text('lyrics');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
