@@ -20,6 +20,8 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
+                <li><a href="{{ url('artists')  }}">Artists</a></li>
+                <li><a href="{{ url('genres')  }}">Genres</a></li>
                 @if (!Auth::guest())
                     <li><a href="{{ url('home') }}">Dashboard</a></li>
                 @endif
