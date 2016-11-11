@@ -116,6 +116,11 @@ class GenreController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $genre = Genre::findOrFail($id);
+        $genre->delete();
+
+        flash()->success('Genre deleted.');
+
+        return redirect('genres');
     }
 }
