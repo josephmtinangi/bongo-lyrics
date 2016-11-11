@@ -13,10 +13,16 @@
     {!! Form::label('artist', 'Artist', ['class' => 'col-sm-2 control-label']) !!}
     <div class="col-sm-10">
         <select name="artist" id="artist" class="form-control" required="required">
-        <option value="">-- Select --</option>
-        	@foreach($artists as $artist)
-        	<option value="{{ $artist->id }}">{{ $artist->name }}</option>
-        	@endforeach
+            <option value="">-- Select --</option>
+            @foreach($artists as $artist)
+                <option value="{{ $artist->id }}"
+                        @if (isset($lyric->artist_id))
+                        @if($lyric->artist_id == $artist->id)
+                        selected="selected"
+                        @endif
+                        @endif
+                >{{ $artist->name }}</option>
+            @endforeach
         </select>
         @if ($errors->has('artist'))
             <p class="help-block">
@@ -29,10 +35,16 @@
     {!! Form::label('genre', 'Genre', ['class' => 'col-sm-2 control-label']) !!}
     <div class="col-sm-10">
         <select name="genre" id="genre" class="form-control" required="required">
-        <option value="">-- Select --</option>
-        	@foreach($genres as $genre)
-        	<option value="{{ $genre->id }}">{{ $genre->display_name }}</option>
-        	@endforeach
+            <option value="">-- Select --</option>
+            @foreach($genres as $genre)
+                <option value="{{ $genre->id }}"
+                        @if (isset($lyric->genre_id))
+                        @if($lyric->genre_id == $genre->id)
+                        selected="selected"
+                        @endif
+                        @endif
+                >{{ $genre->display_name }}</option>
+            @endforeach
         </select>
         @if ($errors->has('genre'))
             <p class="help-block">

@@ -16,7 +16,7 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Name</th>
+                                        <th>Song title</th>
                                         <th>Added</th>
                                         <th>Updated</th>
                                         <th colspan="2">Actions</th>
@@ -27,10 +27,10 @@
                                     @foreach($lyrics as $lyric)
                                         <tr>
                                             <td>{{ $i++ }}</td>
-                                            <td>{{ $lyric->titlr }}</td>
+                                            <td>{{ $lyric->title }}</td>
                                             <td>{{ $lyric->created_at }}</td>
                                             <td>{{ $lyric->updated_at }}</td>
-                                            <td><a href="{{ url('artists/' . $lyric->id . '/edit') }}">Edit</a></td>
+                                            <td><a href="{{ url('lyrics/' . $lyric->id . '/edit') }}">Edit</a></td>
                                             <td>
                                                 <a data-toggle="modal" href='#{{ $lyric->id }}'>Delete</a>
                                                 <div class="modal fade" id="{{ $lyric->id }}">
@@ -45,11 +45,11 @@
                                                             <div class="modal-body">
                                                                 Are you sure you want to delete permanently?
                                                                 <p>
-                                                                    <strong>{{ $lyric->name }}</strong>
+                                                                    <strong>{{ $lyric->title }}</strong>
                                                                 </p>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <form action="{{ url('artists/'.$lyric->id) }}"
+                                                                <form action="{{ url('lyrics/'.$lyric->id) }}"
                                                                       method="POST">
                                                                     {{ csrf_field() }}
                                                                     {{ method_field('DELETE') }}

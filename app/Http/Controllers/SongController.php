@@ -13,7 +13,7 @@ class SongController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('auth', ['except' => ['show']]);
     }
 
     /**
@@ -47,6 +47,13 @@ class SongController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required|unique:songs|max:255',
+            'artist' => 'required',
+            'genre' => 'required',
+            'lyrics' => 'required',
+        ]);
+
         Song::create([
             'title' => $request->input('title'),
             'artist_id' => $request->input('artist'),
@@ -80,7 +87,10 @@ class SongController extends Controller
      */
     public function edit($id)
     {
-        //
+        $artists = Artist::all();
+        $genres = Genre::all();
+        $lyric = Song::findOrFail($id);
+        return view('lyrics.edit', compact('lyric', 'artists', 'genres'));
     }
 
     /**
@@ -92,7 +102,20 @@ class SongController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $lyric = Song::findOrFail($id);
+
+        $lyric->title = $request->input('title');
+        $lyric->artist_id = $request->input('artist');
+        $lyric->youtube_url = $request->input('youtube_url');
+        $lyric->lyrics = $request->input('lyrics');
+        $lyric->genre_id = $request->input('genre');
+        $lyric->user_id = Auth::user()->id;
+
+        $lyric->save();
+
+        flash('Lyric updated.');
+
+        return redirect('lyrics');
     }
 
     /**
@@ -103,6 +126,11 @@ class SongController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $lyric = Song::findOrFail($id);
+        $lyric->delete();
+
+        flash()->success('Lyric deleted.');
+
+        return redirect('lyrics');
     }
 }
