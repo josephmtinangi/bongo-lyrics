@@ -1,13 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <h2>Login into your account</h2>
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
+<div class="login">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h2 class="text-center">Login</h2>
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
 
@@ -15,7 +13,8 @@
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                                <input id="email" type="email" class="form-control" name="email"
+                                       value="{{ old('email') }}" required autofocus>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -61,7 +60,6 @@
                             </div>
                         </div>
                     </form>
-                </div>
             </div>
         </div>
     </div>
