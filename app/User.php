@@ -31,4 +31,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Genre');
     }
+
+    public function artists()
+    {
+        return $this->belongsToMany('App\Artist');
+    }
 }
