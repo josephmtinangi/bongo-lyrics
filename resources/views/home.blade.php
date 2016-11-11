@@ -27,7 +27,7 @@
                                     @foreach($lyrics as $lyric)
                                         <tr>
                                             <td>{{ $i++ }}</td>
-                                            <td>{{ $lyric->display_name }}</td>
+                                            <td>{{ $lyric->title }}</td>
                                             <td>{{ $lyric->created_at }}</td>
                                             <td>{{ $lyric->updated_at }}</td>
                                             <td><a href="{{ url('genres/' . $lyric->id . '/edit') }}">Edit</a></td>
@@ -40,12 +40,12 @@
                                                                 <button type="button" class="close" data-dismiss="modal"
                                                                         aria-hidden="true">&times;</button>
                                                                 <h4 class="modal-title">
-                                                                    Delete {{ $lyric->display_name }}</h4>
+                                                                    Delete {{ $lyric->title }}</h4>
                                                             </div>
                                                             <div class="modal-body">
                                                                 Are you sure you want to delete permanently?
                                                                 <p>
-                                                                    <strong>{{ $lyric->display_name }}</strong>
+                                                                    <strong>{{ $lyric->title }}</strong>
                                                                 </p>
                                                             </div>
                                                             <div class="modal-footer">

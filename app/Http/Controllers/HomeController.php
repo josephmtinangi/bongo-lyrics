@@ -27,7 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $lyrics = Song::whereId(Auth::user()->id)->get();
+        $lyrics = Song::whereUserId(Auth::user()->id)->get();
         $genres = Genre::whereUserId(Auth::user()->id)->get();
         $artists = Artist::all();
         return view('home', compact('lyrics', 'genres', 'artists'));
