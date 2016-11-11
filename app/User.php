@@ -36,4 +36,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Artist');
     }
+
+    public function songs()
+    {
+        return $this->hasMany('App\Song');
+    }
 }

@@ -14,4 +14,14 @@ class Song extends Model
         'genre_id',
         'user_id',
     ];
+
+    public function artist()
+    {
+        return $this->belongsTo('App\Artist');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

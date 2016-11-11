@@ -17,4 +17,9 @@ class Artist extends Model
     {
         return $this->belongsToMany('App\User');
     }
+
+    public function songs()
+    {
+        return $this->hasMany('App\Song');
+    }
 }
