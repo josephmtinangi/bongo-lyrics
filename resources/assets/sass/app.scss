@@ -12,7 +12,7 @@
 .login {
   background: #53518C;
   color: #fff;
-  padding : {
+  padding: {
     top: 5em;
     bottom: 10em;
   }
@@ -21,14 +21,20 @@
 .register {
   background: #53518C;
   color: #fff;
-  padding : {
+  padding: {
     top: 5em;
     bottom: 10em;
   }
 }
 
 footer {
-  margin-top: 10em;
+  background: #28943B;
+  color: #fff;
+  padding: 2.5em;
+
+  a {
+    color: #FFF;
+  }
 }
 
 .animate {

@@ -17,7 +17,11 @@
   padding-bottom: 10em; }
 
 footer {
-  margin-top: 10em; }
+  background: #28943B;
+  color: #fff;
+  padding: 2.5em; }
+  footer a {
+    color: #FFF; }
 
 .animate {
   -webkit-transition: all 0.3s ease-in-out;
