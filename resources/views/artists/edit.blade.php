@@ -5,11 +5,11 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                {!! Form::model($genre, ['route' => ['artists.update', $genre->id], 'method' => 'patch', 'class' => 'form-horizontal']) !!}
+                {!! Form::model($artist, ['route' => ['artists.update', $artist->id], 'method' => 'patch', 'class' => 'form-horizontal']) !!}
 
                 {{ csrf_field() }}
 
-                @include('genres._form')
+                @include('artists._form')
 
                 <div class="col-sm-10 col-sm-offset-2">
                     {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}

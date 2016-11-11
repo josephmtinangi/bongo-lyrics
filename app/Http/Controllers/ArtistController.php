@@ -78,7 +78,8 @@ class ArtistController extends Controller
      */
     public function edit($id)
     {
-        //
+        $artist = Artist::findOrFail($id);
+        return view('artists.edit', compact('artist'));
     }
 
     /**
@@ -90,7 +91,21 @@ class ArtistController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:255',
+        ]);
+
+        $artist = Artist::findOrFail($id);
+
+        $artist->first_name = $request->input('first_name');
+        $artist->last_name = $request->input('last_name');
+        $artist->name = $request->input('name');
+
+        $artist->save();
+
+        flash('Artist updated.');
+
+        return redirect('artists');
     }
 
     /**
