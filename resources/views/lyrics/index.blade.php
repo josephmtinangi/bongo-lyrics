@@ -2,12 +2,15 @@
 
 @section('content')
 
+<div class="jumbotron jumbotron-lyrics">
+	<div class="container">
+		<h1>Recently added</h1>
+	</div>
+</div>
+
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-
-                <h2 class="text-center">Recently Added</h2>
-
 
                 @include('lyrics._lyrics')
 

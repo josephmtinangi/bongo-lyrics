@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="jumbotron">
+<div class="jumbotron jumbotron-welcome">
 	<div class="container text-center">
 		<h1>Bongo Lyrics</h1>
 		<p>
