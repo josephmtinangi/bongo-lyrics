@@ -8,7 +8,7 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 well well-lg">
+            <div class="col-sm-12">
 
                 @if($genres->count() > 0)
                     @foreach($genres->chunk(4) as $genresSet)
@@ -16,12 +16,14 @@
                             @foreach($genresSet as $genre)
                                 <div class="col-sm-3">
                                     <div class="thumbnail">
-                                        <img src="#" alt="">
+                                        <div class="text-center">
+                                            <span class="glyphicon glyphicon-flash lyric-icon"></span> 
+                                        </div>
                                         <div class="caption">
-                                            <h3>{{ $genre->display_name }}</h3>
-                                            <p>
-                                                <a href="{{ url('genres/' . $genre->id) }}" class="btn btn-primary">Songs</a>
-                                            </p>
+                                            <div class="text-center">
+                                                <h3>{{ $genre->display_name }}</h3>
+                                                <a href="{{ url('genres/' . $genre->id) }}"><span class="glyphicon glyphicon-music"></span> Songs</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
