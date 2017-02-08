@@ -23,9 +23,6 @@
                 <li class="{{ Request::is('artists') == 'artists' ? 'active' : ''  }}"><a href="{{ url('artists')  }}">Artists</a>
                 </li>
                 <li class="{{ Request::is('genres') == 'genres' ? 'active' : ''  }}"><a href="{{ url('genres')  }}">Genres</a></li>
-                @if (!Auth::guest())
-                    <li><a href="{{ url('home') }}">Dashboard</a></li>
-                @endif
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -43,6 +40,7 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ url('home') }}">Dashboard</a></li>
                             <li>
                                 <a href="{{ url('/logout') }}"
                                    onclick="event.preventDefault();
