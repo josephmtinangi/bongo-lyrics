@@ -9,7 +9,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
+    <!-- Fonts -->
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link href="/css/app.css" rel="stylesheet">
@@ -30,7 +31,7 @@
     </div>
     @yield('content')
 
-    @include('partials/footer')
+    @include('partials.footer')
 
 </div>
 

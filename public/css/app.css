@@ -17,11 +17,13 @@
   padding-bottom: 10em; }
 
 footer {
-  background: #28943B;
+  background: #17648B;
   color: #fff;
   padding: 2.5em; }
   footer a {
     color: #FFF; }
+  footer p {
+    font-size: 20px; }
 
 .animate {
   -webkit-transition: all 0.3s ease-in-out;
