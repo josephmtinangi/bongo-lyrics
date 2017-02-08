@@ -13,13 +13,25 @@
 		</p>
 	</div>
 </div>
-
-    <div class="container">
-        <div class="recently">
-            <h1 class="text-center">Recently Added</h1>
-
-            @include('lyrics._lyrics')
-
-        </div>
-    </div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8">
+			@include('lyrics._lyrics')
+		</div>
+		<div class="col-sm-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">HOT</h3>
+				</div>
+				<div class="panel-body">
+					<div class="list-group">
+						<a href="#" class="list-group-item active">Item 1</a>
+						<a href="#" class="list-group-item">Item 2</a>
+						<a href="#" class="list-group-item">Item 3</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 @endsection
