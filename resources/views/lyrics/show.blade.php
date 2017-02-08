@@ -14,7 +14,8 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-4">
                 <article class="text-center">
                     {{ $lyric->lyrics }}
                 </article>
@@ -22,6 +23,18 @@
                 <div class="comments">
                     <h2>Comments</h2>
                 </div>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2">
+                <h3>FOLLOW US</h3>
+                <ul class="list-unstyled">
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Pinterest</a></li>
+                    <li><a href="#">Youtube</a></li>
+                    <li><a href="#">Google+</a></li>
+                </ul>
             </div>
         </div>
     </div>
