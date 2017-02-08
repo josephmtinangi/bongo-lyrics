@@ -20,8 +20,20 @@
                     {{ $lyric->lyrics }}
                 </article>
 
+                <hr>
+
                 <div class="comments">
                     <h2>Comments</h2>
+
+                    {!! Form::open([]) !!}
+                        <div class="form-group">
+                            {!! Form::textarea('body', null, ['class' => 'form-control', 'placeholder' => 'You comment here...']) !!}
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                    {!! Form::close() !!}
+
                 </div>
             </div>
             <div class="col-sm-1"></div>
