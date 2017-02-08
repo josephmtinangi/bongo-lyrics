@@ -8,7 +8,7 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 well well-lg">
+            <div class="col-sm-12">
 
                 @if($artists->count() > 0)
                     @foreach($artists->chunk(4) as $artistsSet)
@@ -16,12 +16,14 @@
                             @foreach($artistsSet as $artist)
                                 <div class="col-sm-3">
                                     <div class="thumbnail">
-                                        <img src="#" alt="">
+                                        <div class="text-center">
+                                            <span class="glyphicon glyphicon-user lyric-icon"></span>
+                                        </div>
                                         <div class="caption">
-                                            <h3>{{ $artist->name }}</h3>
-                                            <p>
-                                                <a href="{{ url('artists/' . $artist->id) }}" class="btn btn-link">Songs</a>
-                                            </p>
+                                            <div class="text-center">
+                                                <h3>{{ $artist->name }}</h3>
+                                                <a href="{{ url('artists/' . $artist->id) }}"><span class="glyphicon glyphicon-music"></span> Songs</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
