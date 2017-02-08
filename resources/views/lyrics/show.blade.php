@@ -21,11 +21,20 @@
                 </article>
 
                 <hr>
+                    @if(count($lyric->comments) > 0)
+                        @foreach($lyric->comments as $comment)
+                            <blockquote>
+                                {{ $comment->body }}
+                                <small>{{ $comment->created_at->diffForHumans() }}</small>
+                            </blockquote>
+                        @endforeach
+                    @endif
+                <hr>
 
                 <div class="comments">
                     <h2>Comments</h2>
 
-                    {!! Form::open([]) !!}
+                    {!! Form::open(['url' => 'lyrics/'.$lyric->id.'/add-comment']) !!}
                         <div class="form-group">
                             {!! Form::textarea('body', null, ['class' => 'form-control', 'placeholder' => 'You comment here...']) !!}
                         </div>

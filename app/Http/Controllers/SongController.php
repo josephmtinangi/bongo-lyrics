@@ -7,6 +7,7 @@ use App\Genre;
 use App\Song;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Comment;
 
 class SongController extends Controller
 {
@@ -133,5 +134,16 @@ class SongController extends Controller
         flash()->success('Lyric deleted.');
 
         return redirect('lyrics');
+    }
+
+    public function addLyric(Request $request, $id)
+    {
+        $comment = new Comment;
+        $comment->body = $request->input('body');
+        $comment->user_id = Auth()->user()->id;
+        $comment->song_id = $id;
+        $comment->save();
+
+        return redirect()->back();
     }
 }

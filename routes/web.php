@@ -25,3 +25,5 @@ Route::resource('genres', 'GenreController');
 Route::resource('artists', 'ArtistController');
 
 Route::resource('lyrics', 'SongController');
+
+Route::post('lyrics/{id}/add-comment', 'SongController@addLyric');
